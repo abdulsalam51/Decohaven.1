@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecoHaven - Interior Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #f8f8f8;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #dddddd;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: rgb(243, 11, 243);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 17px;
+            font-size: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(6, 6, 170);
+            font-weight: 400;
+        }
+        a:hover{
+             color: rgb(226, 99, 252);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                gap: 5px;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            background: url('page.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 70px;
+            font-size: 43px;
+            color: rgb(255, 255, 255);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+
+        .services {
+            padding: 50px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .services h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: rgb(199, 31, 199);
+        }
+
+        .services p {
+            margin-bottom: 20px;
+            color: #535050;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .service-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .service-item {
+            padding: 20px;
+            background: #f8f8f8;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .image {
+            height: 200px;
+            width: 220px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .footer-logo h2 {
+            font-size: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+            margin: 4px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: rgb(212, 12, 212);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin: 4px;
+        }
+
+        .footer-social a {
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: rgb(212, 12, 212);
+        }
+
+        .footer-subscribe {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .footer-subscribe input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .footer-subscribe button {
+            padding: 10px 15px;
+            border: none;
+            background-color: rgb(204, 17, 204);
+            color: #222;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+
+        .footer-subscribe button:hover {
+            background-color: purple;
+        }
+
+        .footer-bottom {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .footer-bottom p:hover {
+            color: rgb(212, 12, 212);
+        }
+
+        h1 {
+            color: rgb(212, 12, 212);
+        }
+
+        .testimonials {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffff;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: rgb(175, 24, 175);
+            font-weight: bold;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            background: rgb(238, 211, 238);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            font-size: 17px;
+            font-style: italic;
+            color: #555;
+        }
+
+        h4 {
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-subscribe {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-subscribe input {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-subscribe button {
+                width: 100%;
+            }
+
+            video {
+                margin-left: 70px;
+                border-radius: 10px;
+            }
+
+        }
+
+        @media (max-width: 400px) {
+            video {
+                margin-left: 20px;
+                border-radius: 10px;
+            }
+        }
+    </style>
+    <nav class="navbar">
+        <div class="logo">Deco<span>Haven</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contac.html">Contact</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>LightUp Your Design</h1>
+            <p>Your space deserve to be as unique and beautiful as you are! Here, we turn ideas
+                into stunning interiors, <br> blending style,comfort and functionality. Whether you're
+                looking for a fresh makeover or a <br> complete transformation, we're here to bring your vision to
+                life.</p>
+        </div>
+    </div>
+    </header>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <p>We’re a creative technology company providing key digital services for everyone.</p>
+        <div class="service-items">
+            <div class="service-item">
+                <img class="image" src="decor.jpg" alt="">
+                <h3>Home Interior</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="home.jpg" alt="">
+                <h3>Custom Design</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="homes.jpg" alt="">
+                <h3>Business Interior</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="hpo.jpg" alt="">
+                <h3>Security Setup</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="pppp.jpg" alt="">
+                <h3>Custom Paint</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="parlour.jpg" alt="">
+                <h3>Home Decor</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="buss.jpg" alt="">
+                <h3>Business Decor</h3>
+            </div>
+            <div class="service-item">
+                <img class="image" src="page.jpg" alt="">
+                <h3>Home Paint</h3>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="our" style="text-align: center; color:  rgb(175, 24, 175); font-size: 38px; font-weight: bold;">
+            Featured Project</h2>
+        <div class="service-items">
+            <div class="service-item">
+                <video style="border-radius: 10px;" width="270" height="360" controls>
+                    <source src="vivid.mp4" type="video/mp4">
+                    <source src="vivid.mp4" type="video/ogg">
+                </video>
+                <h3 style="color: rgb(175, 24, 175); text-align: center;">Decoration at Lekki Phase1 </h3>
+            </div>
+            <div class="service-item">
+                <video style="border-radius: 10px;" width="270" height="360" controls>
+                    <source src="videop.mp4" type="video/mp4">
+                    <source src="videop.mp4" type="video/ogg">
+                </video>
+                <h3 style="color: rgb(175, 24, 175); text-align: center;">Decoration at Ibadan </h3>
+            </div>
+            <div class="service-item">
+                <video style="border-radius: 10px;" width="270" height="360" controls>
+                    <source src="vedio.mp4" type="video/mp4">
+                    <source src="vedio.mp4" type="video/ogg">
+                </video>
+                <h3 style="color: rgb(175, 24, 175); text-align: center;">Decoration at Lagos </h3>
+            </div>
+            <div class="service-item">
+                <video style="border-radius: 10px;" width="270" height="360" controls>
+                    <source src="videos.mp4" type="video/mp4">
+                    <source src="videos.mp4" type="video/ogg">
+                </video>
+                <h3 style="color: rgb(175, 24, 175); text-align: center;">Decoration for WorkSpace </h3>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <h2>What Our Clients Says</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <img src="profile2.jpg" alt="">
+                <p class="quote">
+                    "Absolutely stutnning designs! Our home has never looked better."
+                </p>
+                <h4>Sarah Johnson</h4>
+            </div>
+            <div class="testimonial">
+                <img src="profile.jpg" alt="">
+                <p class="quote">
+                    "Professional and creative! They transformed my space beautifully."
+                </p>
+                <h4>James Carter</h4>
+            </div>
+            <div class="testimonial">
+                <img src="profile1.jpg" alt="">
+                <p class="quote">
+                    "A seamless experience from start to finish. Highly recommended!"
+                </p>
+                <h4>Emily Roberts</h4>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="logo">Deco<span>Haven</span></div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Team</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a class="fab fa-facebook-f" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                    </svg></a>
+                <a class="fab fa-twitter" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path
+                            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                    </svg>
+                </a>
+                <a class="fab fa-instagram" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                    </svg>
+                </a>
+                <a class="fab fa-linkedin-in" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-linkedin" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-subscribe">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Send Us Message</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="par">&copy; 2025 Deco<span style="color: rgb(219, 16, 219);">Haven</span> . All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
